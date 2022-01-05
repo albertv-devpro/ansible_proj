@@ -1,0 +1,31 @@
+COserver-1 ansible_host=172.16.208.140 ansible_ssh_user=devops ansible_ssh_pass=devops
+UBserver-2 ansible_host=172.16.208.150 ansible_ssh_user=devops ansible_ssh_pass=devops
+
+[control]
+#Myserver-1 ansible_connection=local
+
+[websrvgrps]
+COserver-1
+
+[dbsrvgrps]
+UBserver-2
+
+[dc_CorkRG:children]
+websrvgrps
+dbsrvgrps
+
+[dc_CorkRG:vars]
+ansible_ssh_user=devops
+ansible_ssh_user=devops
+
+[centos]
+COserver-1
+
+[ubuntu]
+UBserver-2
+
+[linux:children]
+centos
+ubuntu
+
+

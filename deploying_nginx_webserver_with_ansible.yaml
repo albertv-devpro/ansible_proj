@@ -1,0 +1,18 @@
+---
+- hosts: all
+  user: devops
+  vars:
+  tasks:
+    - name: install nginx webserver
+      apt:
+        name: nginx
+        update_cache: yes
+        state: present
+
+    - name: start and enable nginx service
+      service:
+        name: nginx
+        state: restarted
+
+
+...
